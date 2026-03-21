@@ -3,12 +3,14 @@ import { Timer } from './components/Timer'
 import { SetupScreen } from './components/SetupScreen'
 import { ScoringScreen } from './components/ScoringScreen'
 import { FinalScreen } from './components/FinalScreen'
+import { ApiStatus } from './components/ApiStatus'
 import { playAlarm } from './utils/sound'
 import { wordGenerator } from './utils/api'
 import type { Team, GamePhase } from './types/game'
 import './App.css'
 
 const DEFAULT_TIME = 40
+const isApiConnected = Boolean(import.meta.env.VITE_GROQ_API)
 
 function App() {
   const [phase, setPhase] = useState<GamePhase>('setup')
@@ -91,7 +93,7 @@ function App() {
   if (phase === 'setup') {
     return (
       <section id="center">
-        <SetupScreen onStart={startGame} isLoading={isLoading} />
+        <SetupScreen onStart={startGame} isLoading={isLoading} isApiConnected={isApiConnected} />
       </section>
     )
   }
@@ -99,7 +101,7 @@ function App() {
   if (phase === 'scoring') {
     return (
       <section id="center">
-        <ScoringScreen teams={teams} word={word} onSubmit={submitScores} />
+        <ScoringScreen teams={teams} word={word} onSubmit={submitScores} isApiConnected={isApiConnected} />
       </section>
     )
   }
@@ -115,12 +117,7 @@ function App() {
   return (
     <>
       <section id="center">
-        <div className="ai-badge">
-          <svg className="sparkle-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5L12 2Z"/>
-          </svg>
-          <span>AI-baserat</span>
-        </div>
+        <ApiStatus isConnected={isApiConnected} />
 
         <div className="scores-display">
           {teams.map((team) => (

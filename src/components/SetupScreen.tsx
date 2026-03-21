@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import type { Team } from '../types/game'
+import { ApiStatus } from './ApiStatus'
 
 interface SetupScreenProps {
   onStart: (teams: Team[], category: string) => void
   isLoading?: boolean
+  isApiConnected: boolean
 }
 
-export function SetupScreen({ onStart, isLoading }: SetupScreenProps) {
+export function SetupScreen({ onStart, isLoading, isApiConnected }: SetupScreenProps) {
   const [teams, setTeams] = useState<Team[]>([
     { id: '1', name: '', score: 0 },
     { id: '2', name: '', score: 0 },
@@ -37,12 +39,7 @@ export function SetupScreen({ onStart, isLoading }: SetupScreenProps) {
     <div className="setup-screen">
       <h1 className="app-title">brainstorm</h1>
       
-      <div className="ai-badge">
-        <svg className="sparkle-icon" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5L12 2Z"/>
-        </svg>
-        <span>AI-baserat</span>
-      </div>
+      <ApiStatus isConnected={isApiConnected} />
 
       <h2 className="screen-subtitle">Skapa Lag</h2>
       <p className="setup-subtitle">Minst 2 lag</p>
