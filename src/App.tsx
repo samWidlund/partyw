@@ -4,6 +4,7 @@ import { Timer } from './components/Timer'
 import { SetupScreen } from './components/SetupScreen'
 import { ScoringScreen } from './components/ScoringScreen'
 import { FinalScreen } from './components/FinalScreen'
+import { playAlarm } from './utils/sound'
 import type { Team, GamePhase } from './types/game'
 import './App.css'
 
@@ -35,6 +36,7 @@ function App() {
             clearInterval(intervalRef.current)
             intervalRef.current = null
           }
+          playAlarm()
           setPhase('scoring')
           return 0
         }
