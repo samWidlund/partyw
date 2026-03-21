@@ -1,4 +1,4 @@
-# Agent Guidelines for partyw
+# Agent Guidelines for brainstorm
 
 ## Project Overview
 

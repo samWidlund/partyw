@@ -1,5 +1,5 @@
 # Project vision
-Create a web app which is a game to play with your friends, called "partyW"
+Create a web app which is a game to play with your friends, called "brainstorm"
 
 # Game specification
 - Multiple teams play in the game

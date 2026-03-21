@@ -136,7 +136,7 @@ function App() {
           </>
         ) : (
           <div className="generate-section">
-            <h1>partyW</h1>
+            <h1>brainstorm</h1>
             <input
               type="number"
               className="timer-input"
