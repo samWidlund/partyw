@@ -30,6 +30,17 @@ body {
   min-height: 100vh;
 }
 
+/* Hide number input arrows */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 #center {
   display: flex;
   flex-direction: column;
@@ -69,20 +80,26 @@ body {
 .timer-input {
   display: block;
   margin: 0 auto 1rem;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  width: 120px;
+  padding: 1rem 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  width: 150px;
   text-align: center;
-  border: 2px solid var(--surface-light);
-  border-radius: 12px;
-  background: var(--surface);
+  border: 2px solid var(--primary);
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 133, 162, 0.1));
   color: var(--text);
+  transition: all 0.3s ease;
 }
 
 .timer-input:focus {
   outline: none;
-  border-color: var(--secondary);
-  box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(255, 230, 109, 0.4);
+}
+
+.timer-input::placeholder {
+  color: var(--text-muted);
 }
 
 .word-display {
@@ -451,19 +468,22 @@ body {
 }
 
 .score-input {
-  width: 80px;
-  padding: 0.5rem;
-  font-size: 1.25rem;
+  width: 100px;
+  padding: 0.75rem 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
   text-align: center;
-  border: 2px solid var(--surface-light);
-  border-radius: 12px;
-  background: var(--surface);
+  border: 2px solid var(--secondary);
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(78, 205, 196, 0.1), rgba(56, 178, 172, 0.1));
   color: var(--text);
+  transition: all 0.3s ease;
 }
 
 .score-input:focus {
   outline: none;
-  border-color: var(--secondary);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(255, 230, 109, 0.4);
 }
 
 .submit-scores-button {
