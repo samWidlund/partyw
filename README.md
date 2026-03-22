@@ -94,6 +94,6 @@ Get a free API key at [console.groq.com](https://console.groq.com).
 
 ---
 
-## 📄 License
+## License
 
 MIT
