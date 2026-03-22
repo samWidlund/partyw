@@ -1,7 +1,7 @@
 # brainstorm
 
 <p align="center">
-  <h1> An AI-powered word association game</h1>
+  <h1> Swedish AI-powered word association game</h1>
   
 ![React](https://img.shields.io/badge/React-19-blue?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-blue?logo=typescript)
@@ -9,7 +9,6 @@
 ![Groq](https://img.shields.io/badge/Groq-API-orange)
 
   <p>Play with friends and family in teams, earning points by brainstorming associated words to randomly generated prompts.</p>
-  <p><em>Note: This game is entirely in Swedish.</em></p>
 </p>
 
 ---
