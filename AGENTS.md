@@ -3,6 +3,7 @@
 ## Project Overview
 
 A React 19 + TypeScript + Vite application. This is a client-side SPA with no backend.
+The app is a word game where teams compete to guess words within a time limit.
 
 ## Commands
 
@@ -21,7 +22,7 @@ npm run lint -- --fix  # Auto-fix linting issues
 
 ### Running a Single Test
 
-**Note:** This project has no test framework configured. If adding tests, prefer Vitest.
+This project has no test framework configured. If tests are needed, prefer Vitest.
 
 ## Code Style
 
@@ -40,6 +41,7 @@ npm run lint -- --fix  # Auto-fix linting issues
 - Prefer **named exports** for components
 - Use **React 19** patterns (no explicit `children` prop needed)
 - React hooks from `react` package, not barrel re-exports
+- Use early returns for conditional rendering (see App.tsx pattern)
 
 ### Imports
 
@@ -76,6 +78,7 @@ import './styles.css'
 - Use **try/catch** with async functions
 - Never swallow errors silently - at minimum log them
 - Create descriptive Error subclasses for domain errors
+- Use `console.warn` for recoverable issues (see App.tsx line 39)
 - Never use `console.error` for expected error flows
 
 ### React Component Patterns
@@ -99,13 +102,19 @@ export default Button  // Avoid this pattern
 
 ```
 src/
-├── components/      # React components
-├── hooks/           # Custom React hooks
-├── utils/           # Pure utility functions
-├── types/           # TypeScript type definitions
+├── components/      # React components (PascalCase)
+├── hooks/           # Custom React hooks (use*.ts)
+├── utils/           # Pure utility functions (camelCase)
+├── types/           # TypeScript type definitions (kebab-case)
 ├── styles/          # CSS files
 └── App.tsx          # Root component
 ```
+
+### CSS Patterns
+
+- Use semantic class names (e.g., `.team-score`, `.word-display`)
+- Avoid deeply nested selectors
+- Keep styles modular per component
 
 ## Linting
 
@@ -122,3 +131,21 @@ ESLint ignores the `dist/` directory.
 - Module: ESNext with bundler resolution
 - JSX: react-jsx (React 19)
 - Strict: true (includes strictNullChecks, noImplicitAny, etc.)
+
+## Environment Variables
+
+- `VITE_GROQ_API` - Optional API key for word generation
+- Use `import.meta.env.VITE_*` to access (see App.tsx line 13)
+
+## State Management
+
+- Use `useState` for local component state
+- Use `useRef` for mutable values that don't trigger re-renders (see App.tsx)
+- No external state management library needed for this scope
+
+## Common Patterns
+
+- **Conditionals**: Use early returns for phase-based rendering
+- **Event handlers**: Inline simple handlers, extract complex ones
+- **Types**: Define shared types in `src/types/`
+- **Utilities**: Pure functions go in `src/utils/`
