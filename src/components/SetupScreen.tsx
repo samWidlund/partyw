@@ -16,7 +16,8 @@ export function SetupScreen({ onStart, isLoading, isApiConnected }: SetupScreenP
   const [category, setCategory] = useState<string>('')
 
   const addTeam = () => {
-    setTeams([...teams, { id: crypto.randomUUID(), name: '', score: 0 }])
+    const newId = crypto.randomUUID ? crypto.randomUUID() : Date.now().toString()
+    setTeams([...teams, { id: newId, name: '', score: 0 }])
   }
 
   const removeTeam = (id: string) => {
@@ -77,11 +78,12 @@ export function SetupScreen({ onStart, isLoading, isApiConnected }: SetupScreenP
         ))}
       </div>
 
-      <button className="add-team-button" onClick={addTeam}>
+      <button type="button" className="add-team-button" onClick={addTeam}>
         + Lägg till lag
       </button>
 
       <button
+        type="button"
         className="start-button"
         onClick={handleStart}
         disabled={!canStart || isLoading}
