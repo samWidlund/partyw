@@ -3,17 +3,19 @@ import { Timer } from './components/Timer'
 import { SetupScreen } from './components/SetupScreen'
 import { ScoringScreen } from './components/ScoringScreen'
 import { FinalScreen } from './components/FinalScreen'
+import { MenuScreen } from './components/MenuScreen'
 import { ApiStatus } from './components/ApiStatus'
 import { playAlarm } from './utils/sound'
 import { wordGenerator } from './utils/api'
-import type { Team, GamePhase } from './types/game'
+import type { Team, GamePhase, GameType } from './types/game'
 import './App.css'
 
 const DEFAULT_TIME = 40
 const isApiConnected = Boolean(import.meta.env.VITE_GROQ_API)
 
 function App() {
-  const [phase, setPhase] = useState<GamePhase>('setup')
+  const [phase, setPhase] = useState<GamePhase>('menu')
+  const [gameType, setGameType] = useState<GameType | null>(null)
   const [teams, setTeams] = useState<Team[]>([])
   const [word, setWord] = useState<string>('')
   const [timeRemaining, setTimeRemaining] = useState<number>(DEFAULT_TIME)
@@ -22,11 +24,18 @@ function App() {
   const intervalRef = useRef<number | null>(null)
 
   const startGame = async (selectedTeams: Team[], category: string) => {
-    setIsLoading(true)
-    await wordGenerator.prefetch(50, category)
+    if (gameType === 'brainrot') {
+      setIsLoading(true)
+      await wordGenerator.prefetch(50, category)
+    }
     setTeams(selectedTeams)
     setPhase('playing')
     setIsLoading(false)
+  }
+
+  const handleSelectGame = (type: GameType) => {
+    setGameType(type)
+    setPhase('setup')
   }
 
   const generateWord = () => {
@@ -88,6 +97,14 @@ function App() {
     setWord('')
     setTimeRemaining(DEFAULT_TIME)
     setTimerInput('')
+  }
+
+  if (phase === 'menu') {
+    return (
+      <section id="center">
+        <MenuScreen onSelectGame={handleSelectGame} />
+      </section>
+    )
   }
 
   if (phase === 'setup') {

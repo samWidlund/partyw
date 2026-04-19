@@ -336,6 +336,47 @@ input[type="number"] {
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
 }
 
+.menu-screen {
+  text-align: center;
+  max-width: 450px;
+  width: 100%;
+  padding: 2rem;
+  background: var(--surface);
+  border-radius: 24px;
+  border: 2px solid var(--surface-light);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+}
+
+.menu-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+}
+
+.game-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.game-button {
+  padding: 1.5rem 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary), var(--accent-pink));
+  color: white;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4);
+}
+
+.game-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(255, 107, 107, 0.6);
+}
+
 .setup-screen h1 {
   font-size: 2rem;
   font-weight: 800;

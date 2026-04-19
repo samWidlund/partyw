@@ -4,4 +4,6 @@ export interface Team {
   score: number
 }
 
-export type GamePhase = 'setup' | 'playing' | 'scoring' | 'final'
+export type GameType = 'brainrot' | 'charader'
+
+export type GamePhase = 'menu' | 'setup' | 'playing' | 'scoring' | 'final'
