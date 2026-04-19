@@ -44,7 +44,7 @@ async function fetchFromApi(wordCount: number, category: string): Promise<string
       messages: [
         {
           role: 'user',
-          content: `Generera exakt ${wordCount} olika vanliga svenska ord ${categoryPrompt}. ALLA orden MÅSTE vara relevanta för denna kategori. Returnera ENBART orden, ett per rad, inget annat. Inga nummer, inga beskrivningar, inget kommatecken. Exempel på giltiga ord: ${examples}. Orden ska vara enkla, välkända och FAMILJVÄNLIGA. Svara endast på svenska och endast med ord som passar kategorin.`,
+          content: `Generera exakt ${wordCount} olika vanliga svenska ord ${categoryPrompt}. ALLA orden MÅSTE vara relevanta för denna kategori. Returnera ENBART orden, ett per rad, inget annat. Inga nummer, inga beskrivningar, inget kommatecken. Exempel på giltiga ord: ${examples}. Orden ska vara roliga eftersom spelet ska köras på en förfest, väldigt viktigt att orden matchar kategorin som anges. Svara endast på svenska och endast med ord som passar kategorin.`,
         },
       ],
       max_tokens: 500,
