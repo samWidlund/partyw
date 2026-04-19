@@ -40,8 +40,8 @@ export function SetupScreen({ onStart, isLoading, isApiConnected, gameType }: Se
   return (
     <div className="setup-screen">
       <h1 className="app-title">{gameType === 'brainrot' ? 'brainstorm' : 'charader'}</h1>
-      
-      <ApiStatus isConnected={isApiConnected} />
+
+      {gameType === 'brainrot' && <ApiStatus isConnected={isApiConnected} />}
 
       <h2 className="screen-subtitle">Skapa Lag</h2>
       <p className="setup-subtitle">Minst 2 lag</p>

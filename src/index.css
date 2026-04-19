@@ -697,6 +697,33 @@ input[type="number"] {
   background-clip: text;
 }
 
+.charader-screen {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 24px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 450px;
+}
+
+.charader-screen.charader-none {
+  background: var(--surface);
+}
+
+.charader-screen.charader-up {
+  background: #22c55e;
+}
+
+.charader-screen.charader-down {
+  background: #ef4444;
+}
+
+.charader-hint {
+  margin-top: 1rem;
+  color: white;
+  font-size: 1.25rem;
+}
+
 .restart-button {
   margin-top: 2rem;
   padding: 1rem 2rem;
