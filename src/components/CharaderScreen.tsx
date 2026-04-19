@@ -7,11 +7,27 @@ export function CharaderScreen() {
 
   const handleOrientation = useCallback((event: DeviceOrientationEvent) => {
     const beta = event.beta
+    const gamma = event.gamma
 
-    if (beta !== null) {
-      if (beta > 45) {
+    if (beta === null) return
+
+    const absBeta = Math.abs(beta)
+    const absGamma = Math.abs(gamma ?? 0)
+
+    const useGamma = absGamma > 30 || absBeta < 30
+
+    if (useGamma && gamma !== null) {
+      if (gamma > 30) {
+        setDirection('down')
+      } else if (gamma < -30) {
         setDirection('up')
-      } else if (beta < -45) {
+      } else {
+        setDirection('none')
+      }
+    } else {
+      if (beta > 30) {
+        setDirection('up')
+      } else if (beta < -30) {
         setDirection('down')
       } else {
         setDirection('none')
